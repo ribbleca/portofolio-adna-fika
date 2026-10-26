@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portofolio Adna Fika</title>
+    <meta name="description" content="Portofolio Adna Fika Agestifanka — lulusan S1 Manajemen dengan latar belakang Rekayasa Perangkat Lunak. Operasional · Digital Marketing." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+    />
+    <link rel="stylesheet" href="hark.css" />
+    <link rel="stylesheet" href="hark-hero.css" />
+    <style>
+      /* Design departure: soft, light, minimal theme with one calm teal accent and Poppins, as the brief asks. */
+      :root, :root[data-theme] { color-scheme: light; }
+      :root {
+        --sans: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --x-bg: #fbfbfb;
+        --x-white: #ffffff;
+        --x-tint: #f5fbfc;
+        --x-tint-2: #eefafd;
+        --x-ink: #333333;
+        --x-mute: #6b7280;
+        --x-mute-2: #9ca3af;
+        --x-cyan: #4fe6fa;
+        --x-teal: #3fa1ac;
+        --x-teal-ink: #26737b; /* the teal, darkened just enough for text and filled buttons */
+        --x-pale: #e1faff;
+        --x-pale-2: #cff6fe;
+        --x-line: #e6eef0;
+        --x-shadow: 0 12px 32px -14px rgb(63 161 172 / 0.24), 0 2px 6px rgb(63 161 172 / 0.05);
+        --x-shadow-hi: 0 24px 48px -18px rgb(63 161 172 / 0.34), 0 4px 12px rgb(63 161 172 / 0.07);
+        --text-primary: var(--x-ink);
+        --text-secondary: var(--x-mute);
+        --stroke-primary: #dbe7ea;
+        --stroke-secondary: var(--x-line);
+        --fill-tertiary: var(--x-pale);
+      }
+      :root {
+        --x-bar-h: 64px;                     /* sticky bar height; sections clear it on anchor jumps */
+        --x-pad: clamp(20px, 2.6vw, 28px);   /* one inner padding for every card: 20px phone, 28px desktop */
+        --x-rhythm: clamp(64px, 8vw, 96px);  /* one vertical rhythm per section: 64px phone, 96px desktop */
+        --x-ring: 0 0 0 1px var(--x-line);
+      }
+      @media (max-width: 880px) { :root { --x-bar-h: 56px; } }
+      html, body { overflow-x: clip; max-width: 100%; }
+      body { background: var(--x-bg); color: var(--x-ink); font-family: var(--sans); }
+      h1, h2, h3 { text-wrap: balance; overflow-wrap: break-word; }
+      p, li, dd { text-wrap: pretty; overflow-wrap: break-word; }
+      img { max-width: 100%; }
+      ::selection { background: var(--x-pale-2); color: var(--x-ink); }
+      :focus-visible { outline-color: var(--x-teal-ink); }
+      .page { padding-top: 0; gap: 0; }
+      .main { gap: 0; }
+      .x-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+      /* ---------- Navbar ---------- */
+      .x-bar {
+        position: sticky; top: 0; z-index: 30; width: 100vw; margin-left: calc(50% - 50vw);
+        background: rgb(255 255 255 / 0.8);
+        -webkit-backdrop-filter: blur(14px) saturate(1.5); backdrop-filter: blur(14px) saturate(1.5);
+        border-bottom: 1px solid var(--x-line); transition: box-shadow 400ms ease;
+      }
+      .x-bar.is-scrolled { box-shadow: 0 8px 28px -16px rgb(63 161 172 / 0.35); }
+      .x-bar__in { max-width: var(--page-max); margin: 0 auto; padding-inline: var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: var(--x-bar-h); }
+      .x-bar__logo { display: inline-flex; align-items: center; gap: 10px; min-height: var(--tap); flex: none; white-space: nowrap; text-decoration: none; font: 600 16px/1 var(--sans); color: var(--x-ink); }
+      .x-mark { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--x-pale); color: var(--x-teal-ink); font: 600 13px/1 var(--sans); letter-spacing: 0.02em; box-shadow: inset 0 0 0 1px var(--x-pale-2); }
+      .x-bar__links { display: flex; align-items: center; gap: 2px; list-style: none; margin: 0; padding: 0; }
+      .x-bar__links a:not(.x-btn) {
+        position: relative; display: inline-flex; align-items: center; min-height: var(--tap); padding-inline: 12px;
+        font: 500 14px/1 var(--sans); color: var(--x-mute); text-decoration: none; white-space: nowrap; transition: color 250ms ease;
+      }
+      .x-bar__links a:not(.x-btn)::after {
+        content: ""; position: absolute; left: 50%; bottom: 8px; width: 16px; height: 2px; margin-left: -8px; border-radius: 2px;
+        background: var(--x-teal); transform: scaleX(0); transition: transform 300ms var(--ease-out);
+      }
+      .x-bar__links a:not(.x-btn):hover { color: var(--x-ink); }
+      .x-bar__links a[aria-current="true"] { color: var(--x-teal-ink); }
+      .x-bar__links a[aria-current="true"]::after { transform: scaleX(1); }
+      .x-bar__cv { margin-left: 10px; }
+      .x-burger {
+        display: none; width: var(--tap); height: var(--tap); border: 1px solid var(--x-line);
+        border-radius: 12px; background: var(--x-white); color: var(--x-ink); cursor: pointer; place-items: center;
+      }
+      .x-burger span, .x-burger span::before, .x-burger span::after {
+        display: block; width: 18px; height: 1.5px; border-radius: 2px; background: currentColor; position: relative;
+        transition: transform 250ms var(--ease-out), background 250ms ease;
+      }
+      .x-burger span::before, .x-burger span::after { content: ""; position: absolute; left: 0; }
+      .x-burger span::before { top: -6px; }
+      .x-burger span::after { top: 6px; }
+      .x-burger[aria-expanded="true"] span { background: transparent; }
+      .x-burger[aria-expanded="true"] span::before { transform: translateY(6px) rotate(45deg); }
+      .x-burger[aria-expanded="true"] span::after { transform: translateY(-6px) rotate(-45deg); }
+      @media (max-width: 880px) {
+        .x-burger { display: grid; flex: none; }
+        .x-bar__in { flex-wrap: wrap; row-gap: 0; }
+        .x-mark { width: 32px; height: 32px; font-size: 12px; }
+        .x-bar__links { display: none; order: 3; flex-basis: 100%; flex-direction: column; align-items: stretch; padding-bottom: 16px; max-height: calc(100svh - var(--x-bar-h)); overflow-y: auto; }
+        .x-bar.is-open .x-bar__links { display: flex; }
+        .x-bar__links a:not(.x-btn) { width: 100%; padding-inline: 4px; border-bottom: 1px solid var(--x-line); font-size: 15px; }
+        .x-bar__links a:not(.x-btn)::after { display: none; }
+        .x-bar__cv { margin: 14px 0 0; }
+        .x-bar__cv .x-btn { width: 100%; min-height: var(--tap); justify-content: center; }
+      }
+
+      /* ---------- Buttons ---------- */
+      .x-links { display: flex; flex-wrap: wrap; gap: 12px; }
+      .x-btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: var(--tap); padding: 10px 22px;
+        border-radius: var(--r-pill); border: 1.5px solid var(--x-teal); background: var(--x-white); color: var(--x-teal-ink);
+        font: 500 14px/1.2 var(--sans); text-decoration: none; cursor: pointer; white-space: nowrap; box-sizing: border-box;
+        transition: translate 300ms var(--ease-out), box-shadow 300ms ease, background 250ms ease, border-color 250ms ease;
+      }
+      .x-btn:hover { translate: 0 -2px; background: var(--x-pale); box-shadow: var(--x-shadow); }
+      .x-btn--fill { background: var(--x-teal-ink); border-color: var(--x-teal-ink); color: #fff; box-shadow: 0 12px 24px -12px rgb(43 127 136 / 0.7); }
+      .x-btn--fill:hover { background: #1f6168; border-color: #1f6168; box-shadow: 0 16px 30px -12px rgb(43 127 136 / 0.75); }
+      .x-btn--sm { min-height: var(--tap); padding: 8px 18px; font-size: 13px; }
+      @media (max-width: 599px) {
+        /* Phones: buttons share a row only when both fit at ≥150px, otherwise each takes the full width. */
+        .x-links .x-btn { flex: 1 1 150px; }
+      }
+      .x-btn svg { width: 16px; height: 16px; flex: none; }
+
+      /* ---------- Hero ---------- */
+      .x-hero {
+        display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); align-items: center; gap: clamp(24px, 4vw, 56px);
+        padding-block: clamp(40px, 6vw, 80px) clamp(48px, 6vw, 80px); min-height: min(86svh, 740px);
+      }
+      .x-hero__copy { display: grid; justify-items: start; gap: 18px; }
+      .x-hello {
+        display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px; border-radius: var(--r-pill);
+        background: var(--x-pale); color: var(--x-teal-ink); font: 500 14px/1.3 var(--sans);
+      }
+      .x-hello::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--x-cyan); box-shadow: 0 0 0 4px rgb(79 230 250 / 0.25); }
+      .x-hero h1 { font: 600 clamp(34px, 5.4vw, 58px)/1.15 var(--sans); letter-spacing: -0.015em; color: var(--x-ink); }
+      .x-hero h1 span { color: var(--x-teal-ink); }
+      .x-role { font: 500 clamp(18px, 2.2vw, 24px)/1.4 var(--sans); color: var(--x-mute); }
+      .x-role b { color: var(--x-teal-ink); font-weight: 600; }
+      .x-caret { display: inline-block; width: 2px; height: 1.05em; margin-left: 3px; vertical-align: -0.15em; border-radius: 2px; background: var(--x-teal); }
+      .x-anim .x-caret { animation: x-blink 1s steps(1) infinite; }
+      @keyframes x-blink { 50% { opacity: 0; } }
+      .x-hero__tag { font: 400 var(--size-prose)/1.75 var(--sans); color: var(--x-mute); max-width: 46ch; }
+      .x-hero .x-links { margin-top: 8px; }
+      /* Hero avatar: a pale-cyan disc of diameter --d inside a 6px pale-cyan ring, a 1px teal hairline and a
+         soft cyan shadow. The transparent cutout sits on top: its hair rises 15% of --d above the disc, and
+         below the disc's centre it is masked to the disc's lower arc. 74% of --d keeps both hands inside. */
+      .x-hero__art { --d: clamp(260px, 34vw, 340px); justify-self: center; display: grid; place-items: center; max-width: 100%; padding-top: calc(var(--d) * 0.15); }
+      .x-orb {
+        position: relative; box-sizing: content-box; width: var(--d); height: var(--d); padding: 6px; border-radius: 50%;
+        background: linear-gradient(180deg, #e1faff, #cff6fe) content-box, #e1faff; transform-origin: 50% 50%;
+        box-shadow: 0 0 0 1px rgb(63 161 172 / 0.55), 0 0 40px 2px rgb(63 196 214 / 0.22);
+      }
+      .x-orb__cut {
+        position: absolute; left: 6px; right: 6px; bottom: 6px; top: calc(6px - var(--d) * 0.15);
+        display: flex; justify-content: center; align-items: flex-start; pointer-events: none;
+        -webkit-mask:
+          linear-gradient(#000, #000) top / 100% calc(100% - var(--d) / 2) no-repeat,
+          radial-gradient(circle calc(var(--d) / 2) at 50% calc(100% - var(--d) / 2), #000 calc(100% - 1px), transparent 100%);
+        mask:
+          linear-gradient(#000, #000) top / 100% calc(100% - var(--d) / 2) no-repeat,
+          radial-gradient(circle calc(var(--d) / 2) at 50% calc(100% - var(--d) / 2), #000 calc(100% - 1px), transparent 100%);
+      }
+      .x-orb__fig { display: block; flex: none; width: calc(var(--d) * 0.74); max-width: 335px; height: auto; }
+      @media (max-width: 820px) {
+        .x-hero { grid-template-columns: minmax(0, 1fr); min-height: 0; padding-top: 24px; gap: 28px; }
+        .x-hero__art { --d: min(260px, 78vw); order: -1; }
+        .x-hero .x-links { width: 100%; }
+        .x-hero .x-links .x-btn { flex: 1 1 150px; }
+      }
+
+      /* ---------- Marquee ---------- */
+      .x-marquee {
+        width: 100vw; margin-left: calc(50% - 50vw); overflow: hidden; padding-block: 16px;
+        background: var(--x-tint); border-block: 1px solid var(--x-line);
+        -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+        mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+      }
+      .x-marquee__track { display: flex; width: max-content; animation: x-marq 48s linear infinite; }
+      .x-marquee:hover .x-marquee__track { animation-play-state: paused; }
+      .x-marquee__track span { flex: none; padding-right: 1em; font: 500 15px/1.5 var(--sans); color: #4b5563; letter-spacing: 0.02em; white-space: nowrap; }
+      .x-marquee__track b { margin-inline: 0.9em; color: var(--x-teal-ink); font-weight: 400; }
+      @keyframes x-marq { to { transform: translateX(-50%); } }
+      @media (max-width: 599px) { .x-marquee { padding-block: 14px; } .x-marquee__track { animation-duration: 40s; } }
+
+      /* ---------- Sections ---------- */
+      .x-band { border-top: 0; padding-block: var(--x-rhythm); scroll-margin-top: var(--x-bar-h); }
+      #home { scroll-margin-top: var(--x-bar-h); }
+      .x-band--tint { background: var(--x-tint); box-shadow: 0 0 0 100vmax var(--x-tint); clip-path: inset(0 -100vmax); }
+      .x-band--tint-2 { background: var(--x-tint-2); box-shadow: 0 0 0 100vmax var(--x-tint-2); clip-path: inset(0 -100vmax); }
+      .x-head { display: grid; justify-items: center; gap: 12px; text-align: center; margin-bottom: clamp(36px, 5vw, 56px); }
+      .x-tag { display: inline-flex; padding: 6px 14px; border-radius: var(--r-pill); background: var(--x-pale); color: var(--x-teal-ink); font: 500 13px/1.3 var(--sans); letter-spacing: 0.02em; }
+      .x-band--tint .x-tag, .x-band--tint-2 .x-tag { background: var(--x-white); box-shadow: inset 0 0 0 1px var(--x-pale-2); }
+      .x-head h2 { font: 600 clamp(26px, 3.4vw, 36px)/1.25 var(--sans); color: var(--x-ink); letter-spacing: -0.01em; }
+      .x-head h2::after { content: ""; display: block; width: 44px; height: 3px; margin: 14px auto 0; border-radius: 3px; background: linear-gradient(90deg, var(--x-cyan), var(--x-teal)); }
+      .x-head h2 + p { max-width: 52ch; font: 400 var(--size-prose)/1.7 var(--sans); color: var(--x-mute); }
+
+      /* ---------- Cards ---------- */
+      .x-card {
+        background: var(--x-white); border: 1px solid var(--x-line); border-radius: var(--r-l); box-shadow: var(--x-shadow);
+        transition: translate 350ms var(--ease-out), box-shadow 350ms ease, border-color 350ms ease;
+      }
+      .x-lift:hover { translate: 0 -4px; box-shadow: var(--x-shadow-hi); border-color: var(--x-pale-2); }
+      .x-ico { width: 44px; height: 44px; flex: none; display: grid; place-items: center; border-radius: 12px; background: var(--x-pale); color: var(--x-teal-ink); }
+      .x-ico svg { width: 20px; height: 20px; }
+
+      /* ---------- About ---------- */
+      .x-about { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(36px, 6vw, 72px); align-items: center; max-width: 960px; margin-inline: auto; }
+      .x-photo { position: relative; justify-self: center; align-self: center; width: clamp(220px, 22vw, 260px); max-width: 100%; margin: 0; padding: 10px; border-radius: var(--r-l); box-shadow: var(--x-shadow); }
+      .x-photo img { display: block; width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: cover; border-radius: var(--r-m); }
+      .x-photo figcaption { display: grid; gap: 2px; padding: 14px 4px 4px; text-align: center; }
+      .x-photo figcaption b { font: 500 15px/1.3 var(--sans); color: var(--x-ink); }
+      .x-photo figcaption span { font: 400 13px/1.3 var(--sans); color: var(--x-teal-ink); }
+      .x-about__body { display: grid; gap: 20px; }
+      .x-about__body p { font: 400 var(--size-prose)/1.8 var(--sans); color: var(--x-mute); }
+      .x-about__body p:first-child { color: var(--x-ink); }
+      .x-facts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+      .x-facts li {
+        display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 10px; border-radius: var(--r-pill);
+        background: var(--x-white); border: 1px solid var(--x-pale-2); font: 500 14px/1.3 var(--sans); color: var(--x-ink);
+        box-shadow: 0 6px 16px -12px rgb(63 161 172 / 0.5);
+      }
+      .x-facts li > span { font-weight: 400; color: var(--x-mute); }
+      .x-facts svg { width: 16px; height: 16px; flex: none; color: var(--x-teal-ink); }
+      @media (max-width: 820px) {
+        .x-about { grid-template-columns: minmax(0, 1fr); }
+        .x-photo { width: clamp(180px, 54vw, 210px); }
+      }
+
+      /* ---------- Education ---------- */
+      .x-edu { max-width: 820px; margin-inline: auto; padding: var(--x-pad); }
+      .x-school { font: 500 17px/1.4 var(--sans); color: var(--x-ink); }
+
+      /* ---------- Experience ---------- */
+      .x-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 4vw, 48px); align-items: center; padding: var(--x-pad); }
+      .x-split + .x-split { margin-top: clamp(20px, 3vw, 32px); }
+      .x-split--flip .x-split__media, .x-split--flip .x-yt { order: -1; }
+      .x-split__media { margin: 0; border-radius: var(--r-m); overflow: hidden; aspect-ratio: 4 / 3; background: var(--x-tint); border: 1px solid var(--x-line); box-shadow: var(--x-shadow); }
+      .x-split__media img { display: block; width: 100%; height: 100%; object-fit: cover; transition: scale 800ms var(--ease-out); }
+      .x-split:hover .x-split__media img { scale: 1.04; }
+      .x-split__body { display: grid; gap: 14px; align-content: start; }
+      .x-num { font: 500 13px/1.3 var(--sans); color: var(--x-teal-ink); letter-spacing: 0.03em; }
+      .x-split__body h3 { font: 600 clamp(22px, 2.6vw, 28px)/1.25 var(--sans); color: var(--x-ink); }
+      .x-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+      .x-meta span { padding: 5px 12px; border-radius: var(--r-pill); background: var(--x-tint); border: 1px solid var(--x-line); font: 500 13px/1.3 var(--sans); color: var(--x-mute); }
+      .x-meta .x-year { background: var(--x-pale); border-color: var(--x-pale-2); color: var(--x-teal-ink); }
+      .x-bullets { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font: 400 15px/1.7 var(--sans); color: var(--x-mute); }
+      .x-bullets li { display: grid; grid-template-columns: 20px minmax(0, 1fr); }
+      .x-bullets li::before { content: ""; width: 7px; height: 7px; margin-top: 0.72em; border-radius: 50%; background: var(--x-cyan); box-shadow: 0 0 0 3px var(--x-pale); }
+      @media (max-width: 820px) {
+        .x-split { grid-template-columns: minmax(0, 1fr); }
+        .x-split .x-split__media, .x-split .x-yt { order: -1; }
+      }
+
+      /* UDINVERSE highlight */
+      .x-feature { background: linear-gradient(140deg, var(--x-white) 0%, var(--x-white) 40%, var(--x-tint-2) 100%); border-color: var(--x-pale-2); }
+      .x-badge { justify-self: start; display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: var(--r-pill); background: var(--x-teal-ink); color: #fff; font: 500 12px/1.3 var(--sans); letter-spacing: 0.04em; }
+      .x-feature__line { font: 400 var(--size-prose)/1.65 var(--sans); color: var(--x-ink); }
+      .x-ytstats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 10px; margin: 4px 0 0; }
+      .x-ytstats div { display: grid; align-content: center; min-width: 0; padding: 14px 16px; border-radius: var(--r-m); background: var(--x-white); border: 1px solid var(--x-line); box-shadow: 0 8px 20px -14px rgb(63 161 172 / 0.45); transition: translate 300ms var(--ease-out), border-color 300ms ease; }
+      .x-ytstats div:hover { translate: 0 -3px; border-color: var(--x-pale-2); }
+      .x-ytstats dt { font: 500 12px/1.3 var(--sans); color: var(--x-mute); letter-spacing: 0.03em; }
+      .x-ytstats dd { margin: 4px 0 0; font: 600 clamp(22px, 2.6vw, 28px)/1.2 var(--sans); color: var(--x-teal-ink); font-variant-numeric: tabular-nums; }
+      /* The dashboard is the base card. The thumbnail (30% of the frame wide) sits on its bottom-left corner and
+         sticks out by ~18% of its own size; the frame's padding holds that overhang, so nothing leaves the frame. */
+      .x-yt { --tw: 30%; position: relative; min-width: 0; max-width: 560px; width: 100%; justify-self: center; padding: 0 0 6.2% 5.4%; }
+      .x-yt__main, .x-yt__thumb { margin: 0; border-radius: var(--r-m); overflow: hidden; border: 1px solid var(--x-line); background: var(--x-white); box-shadow: var(--x-shadow); }
+      .x-yt__main img { display: block; width: 100%; height: auto; aspect-ratio: 924 / 770; object-fit: cover; }
+      .x-yt__thumb {
+        position: absolute; left: 0; bottom: 0; width: var(--tw);
+        box-shadow: 0 0 0 3px var(--x-white), var(--x-shadow-hi);
+        transition: translate 500ms var(--ease-out);
+      }
+      .x-yt__thumb img { display: block; width: 100%; height: auto; aspect-ratio: 384 / 440; object-fit: cover; }
+      .x-yt:hover .x-yt__thumb { translate: 0 -3px; }
+      @media (max-width: 480px) {
+        .x-yt { --tw: 28%; padding: 0 0 4.6% 4%; }
+        .x-ytstats div { padding: 12px 10px; text-align: center; justify-items: center; }
+        .x-ytstats dt { line-height: 1.35; }
+      }
+
+      /* ---------- Skills ---------- */
+      .x-skills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+      .x-skill { display: grid; grid-template-rows: auto 1fr; align-content: start; gap: 18px; padding: var(--x-pad); }
+      .x-chips { align-content: flex-start; }
+      .x-chips li { max-width: 100%; overflow-wrap: anywhere; }
+      .x-skill h3 { display: flex; align-items: center; gap: 12px; font: 600 18px/1.3 var(--sans); color: var(--x-ink); }
+      .x-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+      .x-chips li {
+        display: inline-flex; align-items: center; gap: 7px; padding: 7px 13px 7px 10px; border-radius: var(--r-pill);
+        background: var(--x-tint); border: 1px solid var(--x-line); font: 400 14px/1.35 var(--sans); color: var(--x-ink);
+        transition: background 250ms ease, border-color 250ms ease, translate 250ms var(--ease-out);
+      }
+      .x-chips li::before {
+        content: ""; width: 14px; height: 14px; flex: none; background: var(--x-teal);
+        -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12.5l4.5 4.5L19 7.5'/></svg>") center / contain no-repeat;
+        mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12.5l4.5 4.5L19 7.5'/></svg>") center / contain no-repeat;
+      }
+      .x-chips--tools li::before {
+        -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z'/></svg>");
+        mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z'/></svg>");
+      }
+      .x-chips--tools li.x-ic-fb::before {
+        -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M13.5 22v-8h3l.5-4h-3.5V8c0-1.1.4-1.8 1.9-1.8H17V2.6c-.4-.1-1.5-.2-2.8-.2-2.8 0-4.7 1.7-4.7 4.8V10H6.5v4h3v8z'/></svg>");
+        mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M13.5 22v-8h3l.5-4h-3.5V8c0-1.1.4-1.8 1.9-1.8H17V2.6c-.4-.1-1.5-.2-2.8-.2-2.8 0-4.7 1.7-4.7 4.8V10H6.5v4h3v8z'/></svg>");
+      }
+      .x-chips--tools li.x-ic-ig::before {
+        -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4'><rect x='3' y='3' width='18' height='18' rx='5'/><circle cx='12' cy='12' r='4'/><circle cx='17.5' cy='6.5' r='1.2' fill='black' stroke='none'/></svg>");
+        mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4'><rect x='3' y='3' width='18' height='18' rx='5'/><circle cx='12' cy='12' r='4'/><circle cx='17.5' cy='6.5' r='1.2' fill='black' stroke='none'/></svg>");
+      }
+      .x-chips--tools li.x-ic-tt::before {
+        -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M16.5 2h-3.6v13.3a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V8.8a6.6 6.6 0 1 0 5.6 6.5V8.6a8 8 0 0 0 4.5 1.4V6.4a4.5 4.5 0 0 1-4.5-4.4z'/></svg>");
+        mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M16.5 2h-3.6v13.3a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V8.8a6.6 6.6 0 1 0 5.6 6.5V8.6a8 8 0 0 0 4.5 1.4V6.4a4.5 4.5 0 0 1-4.5-4.4z'/></svg>");
+      }
+      .x-chips li:hover { background: var(--x-pale); border-color: var(--x-pale-2); translate: 0 -2px; }
+      .x-chips small { color: var(--x-mute); }
+      @media (max-width: 960px) { .x-skills { grid-template-columns: repeat(2, minmax(0, 1fr)); } .x-skill:last-child { grid-column: 1 / -1; } }
+      @media (max-width: 640px) { .x-skills { grid-template-columns: minmax(0, 1fr); gap: 16px; } }
+
+      /* ---------- Contact ---------- */
+      .x-contact-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+      .x-ccard { display: grid; justify-items: center; align-content: start; gap: 8px; min-width: 0; padding: var(--x-pad); text-align: center; text-decoration: none; color: inherit; }
+      .x-ccard .x-ico { width: 54px; height: 54px; border-radius: 50%; margin-bottom: 6px; }
+      .x-ccard .x-ico svg { width: 22px; height: 22px; }
+      .x-clabel { font: 500 13px/1.3 var(--sans); color: var(--x-mute); }
+      .x-ccard strong { font: 500 16px/1.4 var(--sans); color: var(--x-ink); overflow-wrap: anywhere; transition: color 250ms ease; }
+      a.x-ccard:hover strong { color: var(--x-teal-ink); }
+      .x-contact-links { justify-content: center; margin-top: clamp(28px, 4vw, 40px); }
+      @media (max-width: 760px) {
+        .x-contact-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+        .x-ccard { grid-template-columns: auto minmax(0, 1fr); justify-items: start; column-gap: 16px; row-gap: 2px; padding: var(--x-pad); text-align: left; }
+        .x-ccard .x-ico { grid-row: 1 / span 2; width: 48px; height: 48px; margin: 0; align-self: center; }
+        .x-ccard > :not(.x-ico) { grid-column: 2; }
+        .x-contact-links .x-btn { flex: 1 1 200px; }
+      }
+      .foot { padding-top: 28px; }
+
+      /* ---------- Scroll progress ---------- */
+      .x-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; pointer-events: none; }
+      .x-progress span { display: block; height: 100%; border-radius: 0 3px 3px 0; background: linear-gradient(90deg, var(--x-cyan), var(--x-teal)); transform-origin: left; transform: scaleX(var(--p, 0)); }
+
+      /* ---------- Intro: AF drawn in teal, name sharpens letter by letter, line grows, overlay splits ---------- */
+      .x-intro { display: none; }
+      .x-intro-on .x-intro { display: block; position: fixed; inset: 0; z-index: 100; cursor: pointer; }
+      .x-intro__panel { position: absolute; left: 0; right: 0; height: 50.5%; background: var(--x-white); transition: transform 640ms cubic-bezier(0.76, 0, 0.24, 1) 80ms; will-change: transform; }
+      .x-intro__panel--t { top: 0; }
+      .x-intro__panel--b { bottom: 0; }
+      .x-intro__in { position: absolute; inset: 0; z-index: 1; display: grid; place-content: center; justify-items: center; gap: 18px; padding: 24px; transition: opacity 300ms ease, transform 420ms var(--ease-out); }
+      .x-intro__af { width: 84px; height: 60px; fill: none; stroke: var(--x-teal); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .x-intro__af path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: x-draw 560ms cubic-bezier(0.65, 0, 0.35, 1) forwards; animation-delay: var(--w, 0ms); }
+      .x-intro__name { font: 500 clamp(18px, 5vw, 28px)/1.2 var(--sans); letter-spacing: 0.06em; color: var(--x-ink); white-space: nowrap; }
+      .x-intro__name span { display: inline-block; opacity: 0; filter: blur(8px); transform: translateY(6px); animation: x-letter 480ms var(--ease-out) forwards; animation-delay: calc(420ms + var(--i, 0) * 20ms); }
+      .x-intro__line { width: min(220px, 60vw); height: 2px; border-radius: 2px; background: var(--x-teal); transform: scaleX(0); animation: x-grow 520ms cubic-bezier(0.65, 0, 0.35, 1) 940ms forwards; }
+      .x-intro.is-out { pointer-events: none; }
+      .x-intro.is-out .x-intro__in { opacity: 0; transform: translateY(-10px); }
+      .x-intro.is-out .x-intro__panel--t { transform: translateY(-100%); }
+      .x-intro.is-out .x-intro__panel--b { transform: translateY(100%); }
+      .x-intro.is-skip .x-intro__panel { transition-duration: 460ms; transition-delay: 0ms; }
+      @keyframes x-draw { to { stroke-dashoffset: 0; } }
+      @keyframes x-letter { to { opacity: 1; filter: blur(0); transform: none; } }
+      @keyframes x-grow { to { transform: scaleX(1); } }
+
+      /* ---------- Motion: hero staggers in once the intro opens (.x-go) ---------- */
+      .x-anim .x-hero__copy > *, .x-anim .x-orb, .x-anim .x-orb__fig { opacity: 0; }
+      .x-anim.x-go .x-orb { opacity: 1; animation: x-disc 900ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+      .x-anim.x-go .x-orb__fig { opacity: 1; animation: x-fig 1000ms cubic-bezier(0.22, 1, 0.36, 1) 160ms both; }
+      .x-anim.x-go .x-hero__art { animation: x-float 6s ease-in-out 1200ms infinite; }
+      .x-anim.x-go .x-hero__copy > * { opacity: 1; animation: x-rise 800ms var(--ease-out) both; animation-delay: calc(var(--i, 0) * 110ms + 260ms); }
+      @keyframes x-disc { from { opacity: 0; transform: scale(0.8); } }
+      @keyframes x-fig { from { opacity: 0; transform: translateY(18px); } }
+      @keyframes x-rise { from { opacity: 0; transform: translateY(24px); filter: blur(8px); } }
+      @keyframes x-float { 50% { transform: translateY(-10px); } }
+      @keyframes x-breathe { 50% { scale: 1.04; } }
+      .x-anim .x-reveal, .x-anim .x-stagger > * {
+        opacity: 0; transform: translateY(24px); filter: blur(6px);
+        transition-property: opacity, transform, filter, translate, box-shadow, border-color, background;
+        transition-duration: 900ms, 900ms, 900ms, 350ms, 350ms, 350ms, 250ms;
+        transition-timing-function: var(--ease-out);
+        transition-delay: var(--dl, 0ms), var(--dl, 0ms), var(--dl, 0ms), 0ms, 0ms, 0ms, 0ms;
+      }
+      .x-anim .x-stagger > * { --dl: calc(var(--i, 0) * 90ms + 80ms); }
+      .x-anim .x-reveal.is-in, .x-anim .x-stagger.is-in > * { opacity: 1; transform: none; filter: none; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .x-marquee { -webkit-mask-image: none; mask-image: none; }
+        .x-marquee__track { animation: none; flex-wrap: wrap; justify-content: center; width: auto; padding-inline: var(--gutter); }
+        .x-marquee__track span { white-space: normal; text-align: center; padding-right: 0; }
+        .x-marquee__track .x-dup { display: none; }
+        .x-intro { display: none !important; }
+        .x-btn, .x-card, .x-chips li, .x-ytstats div, .x-split__media img, .x-yt__thumb { transition: none; }
+      }
+
+    </style>
+    <script>
+      (function () {
+        var r = document.documentElement;
+        r.classList.add("x-js");
+        if (!window.matchMedia || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          r.classList.add("x-anim");
+          // The intro plays once per session; if storage is blocked it simply replays.
+          var seen = false;
+          try { seen = !!sessionStorage.getItem("x-intro"); sessionStorage.setItem("x-intro", "1"); } catch (e) {}
+          r.classList.add(seen ? "x-go" : "x-intro-on");
+          // Safety net: never leave the page hidden if a script fails.
+          setTimeout(function () {
+            r.classList.add("x-go");
+            r.classList.remove("x-intro-on");
+            if (window.__xok) return;
+            [].forEach.call(document.querySelectorAll(".x-reveal, .x-stagger"), function (el) { el.classList.add("is-in"); });
+          }, 4000);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="x-intro" id="x-intro" aria-hidden="true" title="Klik untuk lewati">
+      <div class="x-intro__panel x-intro__panel--t"></div>
+      <div class="x-intro__panel x-intro__panel--b"></div>
+      <div class="x-intro__in">
+        <svg class="x-intro__af" viewBox="0 0 100 70">
+          <path pathLength="1" d="M8 62 L28 8 L48 62" />
+          <path pathLength="1" d="M16 44 H40" style="--w:260ms" />
+          <path pathLength="1" d="M62 62 V8 H92" style="--w:140ms" />
+          <path pathLength="1" d="M62 34 H86" style="--w:360ms" />
+        </svg>
+        <p class="x-intro__name" id="x-intro-name">Adna Fika Agestifanka</p>
+        <span class="x-intro__line"></span>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var r = document.documentElement, el = document.getElementById("x-intro");
+        if (!r.classList.contains("x-intro-on")) { el.parentNode.removeChild(el); return; }
+        var name = document.getElementById("x-intro-name");
+        name.innerHTML = name.textContent.split("").map(function (c, i) {
+          return '<span style="--i:' + i + '">' + (c === " " ? "&nbsp;" : c) + "</span>";
+        }).join("");
+        var done = false;
+        function finish(skip) {
+          if (done) return;
+          done = true;
+          if (skip) el.classList.add("is-skip");
+          el.classList.add("is-out");
+          setTimeout(function () { r.classList.add("x-go"); }, skip ? 60 : 120);
+          setTimeout(function () {
+            r.classList.remove("x-intro-on");
+            if (el.parentNode) el.parentNode.removeChild(el);
+          }, skip ? 520 : 760);
+          document.removeEventListener("keydown", onKey);
+        }
+        function onKey() { finish(true); }
+        el.addEventListener("click", function () { finish(true); });
+        document.addEventListener("keydown", onKey);
+        setTimeout(function () { finish(false); }, 1480);
+      })();
+    </script>
+    <div class="x-progress" aria-hidden="true"><span></span></div>
+    <div class="page" id="top">
+      <header class="x-bar" id="bar">
+        <nav class="x-bar__in" aria-label="Utama">
+          <a class="x-bar__logo" href="#home"><span class="x-mark" aria-hidden="true">AF</span>Adna Fika</a>
+          <button class="x-burger" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+          <ul class="x-bar__links" id="menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="x-bar__cv">
+              <a class="x-btn x-btn--sm" href="CV_Adna_Fika_Agestifanka.pdf" download="CV_Adna_Fika_Agestifanka.pdf">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download CV
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="main">
+        <section class="x-hero" id="home" data-nav="Home">
+          <div class="x-hero__copy">
+            <p class="x-hello" style="--i:0">Halo, saya</p>
+            <h1 style="--i:1">Adna Fika <span>Agestifanka</span></h1>
+            <p class="x-role" style="--i:2">
+              <b id="x-type">Operasional Bisnis</b><i class="x-caret" aria-hidden="true"></i>
+            </p>
+            <p class="x-hero__tag" style="--i:3">Lulusan S1 Manajemen dengan latar belakang Rekayasa Perangkat Lunak.</p>
+            <div class="x-links" style="--i:4">
+              <a class="x-btn x-btn--fill" href="CV_Adna_Fika_Agestifanka.pdf" download="CV_Adna_Fika_Agestifanka.pdf">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download CV
+              </a>
+              <a class="x-btn" href="#contact">Hubungi Saya</a>
+            </div>
+          </div>
+          <div class="x-hero__art">
+            <div class="x-orb">
+              <div class="x-orb__cut">
+                <img class="x-orb__fig" src="hero_cut_hd2.png" width="593" height="926" loading="eager" fetchpriority="high" decoding="async" alt="Adna Fika Agestifanka berpolo hitam, bersedekap" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="x-marquee" aria-hidden="true">
+          <div class="x-marquee__track">
+            <span>Operasional <b>•</b> Digital Marketing <b>•</b> E-Commerce <b>•</b> Content Creator <b>•</b> Canva <b>•</b> CapCut <b>•</b> Excel <b>•</b> Facebook Ads <b>•</b> Instagram Ads <b>•</b> TikTok Ads <b>•</b></span>
+            <span class="x-dup">Operasional <b>•</b> Digital Marketing <b>•</b> E-Commerce <b>•</b> Content Creator <b>•</b> Canva <b>•</b> CapCut <b>•</b> Excel <b>•</b> Facebook Ads <b>•</b> Instagram Ads <b>•</b> TikTok Ads <b>•</b></span>
+            <span class="x-dup">Operasional <b>•</b> Digital Marketing <b>•</b> E-Commerce <b>•</b> Content Creator <b>•</b> Canva <b>•</b> CapCut <b>•</b> Excel <b>•</b> Facebook Ads <b>•</b> Instagram Ads <b>•</b> TikTok Ads <b>•</b></span>
+            <span class="x-dup">Operasional <b>•</b> Digital Marketing <b>•</b> E-Commerce <b>•</b> Content Creator <b>•</b> Canva <b>•</b> CapCut <b>•</b> Excel <b>•</b> Facebook Ads <b>•</b> Instagram Ads <b>•</b> TikTok Ads <b>•</b></span>
+          </div>
+        </div>
+
+        <section class="section x-band" id="about" data-nav="About Me">
+          <div class="x-head x-reveal">
+            <p class="x-tag">About Me</p>
+            <h2>Tentang saya</h2>
+          </div>
+          <div class="x-about">
+            <figure class="x-photo x-card x-reveal">
+              <img src="pasfoto.jpg" width="1333" height="2000" loading="lazy" decoding="async" alt="Pas foto formal Adna Fika Agestifanka, jas hitam dengan latar merah" />
+              <figcaption><b>Adna Fika Agestifanka</b><span>S1 Manajemen</span></figcaption>
+            </figure>
+            <div class="x-about__body x-stagger">
+              <p>Lulusan S1 Manajemen dengan latar belakang pendidikan Rekayasa Perangkat Lunak (IT) yang memiliki pengalaman praktis dalam manajemen operasional bisnis, pemasaran digital, dan riset pasar. Terbiasa mengelola siklus usaha secara mandiri.</p>
+              <p>Memiliki kemampuan belajar yang cepat, melek teknologi digital, teliti, dan bertanggung jawab. Siap berkontribusi serta mengembangkan kompetensi secara maksimal di lingkungan kerja yang dinamis dan profesional.</p>
+              <ul class="x-facts">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Domisili</span> Pemalang, Jawa Tengah</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11.5V16c0 1.4 2.2 3 5 3s5-1.6 5-3v-4.5"/></svg><span>IPK</span> 3,30 / 4,00</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>Lulus</span> 2026</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section x-band x-band--tint" id="education" data-nav="Education">
+          <div class="x-head x-reveal">
+            <p class="x-tag">Education</p>
+            <h2>Pendidikan</h2>
+          </div>
+          <div class="x-edu x-card x-lift x-reveal">
+            <ol class="timeline">
+              <li>
+                <p class="timeline__when">2022–2026</p>
+                <div class="timeline__what">
+                  <p class="x-school">Universitas Wijayakusuma Purwokerto</p>
+                  <p class="sub">S1 Manajemen · IPK 3,30/4,00</p>
+                </div>
+              </li>
+              <li>
+                <p class="timeline__when">2018–2022</p>
+                <div class="timeline__what">
+                  <p class="x-school">SMK Syafi'i Akrom Pekalongan</p>
+                  <p class="sub">Rekayasa Perangkat Lunak</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="section x-band" id="experience" data-nav="Experience">
+          <div class="x-head x-reveal">
+            <p class="x-tag">Experience</p>
+            <h2>Pengalaman kerja &amp; proyek</h2>
+          </div>
+
+          <article class="x-split x-card x-lift x-reveal">
+            <div class="x-split__body">
+              <p class="x-num">01 — F&amp;B UMKM</p>
+              <h3>Queen Quesillo</h3>
+              <div class="x-meta"><span class="x-year">2025–2026</span><span>Pemilik &amp; Pengelola Operasional</span></div>
+              <ul class="x-bullets">
+                <li>Mengelola operasional harian bisnis kuliner, meliputi pengadaan bahan baku, proses produksi, dan pelayanan pelanggan.</li>
+                <li>Merancang dan mengeksekusi strategi penjualan musiman yang berhasil meningkatkan penetrasi pasar.</li>
+                <li>Melakukan pencatatan keuangan dan evaluasi penjualan secara berkala untuk menjaga profitabilitas usaha.</li>
+              </ul>
+            </div>
+            <figure class="x-split__media"><img src="quesillo_real.jpg" width="1100" height="887" loading="lazy" decoding="async" alt="Irisan quesillo karamel produk Queen Quesillo" /></figure>
+          </article>
+
+          <article class="x-split x-split--flip x-card x-lift x-feature x-reveal">
+            <div class="x-split__body">
+              <span class="x-badge">★ Highlight</span>
+              <p class="x-num">02 — Kanal YouTube</p>
+              <h3>UDINVERSE</h3>
+              <div class="x-meta"><span class="x-year">2022–2026</span><span>Kreator Konten</span></div>
+              <p class="x-feature__line">Kanal animasi cerita 'Udin &amp; Emak' dengan ratusan ribu subscriber.</p>
+              <ul class="x-bullets">
+                <li>Mengelola produksi konten video digital secara penuh, mencakup penyusunan konsep, desain elemen visual, hingga pengeditan akhir (Canva, CapCut).</li>
+              </ul>
+              <dl class="x-ytstats">
+                <div><dt>Subscriber</dt><dd data-count="753806" data-dec="0">753.806</dd></div>
+                <div><dt>Penayangan</dt><dd data-count="155.9" data-dec="1" data-suffix=" jt">155,9 jt</dd></div>
+                <div><dt>Suka</dt><dd data-count="3.6" data-dec="1" data-suffix=" jt">3,6 jt</dd></div>
+                <div><dt>Dibagikan</dt><dd data-count="26.8" data-dec="1" data-suffix=" rb">26,8 rb</dd></div>
+              </dl>
+              <p class="fineprint">YouTube Analytics, sepanjang waktu.</p>
+            </div>
+            <div class="x-yt">
+              <figure class="x-yt__main"><img src="yt_dash.jpg" width="924" height="770" loading="lazy" decoding="async" alt="Dasbor YouTube Analytics kanal UDINVERSE" /></figure>
+              <figure class="x-yt__thumb"><img src="yt_thumb.jpg" width="384" height="440" loading="lazy" decoding="async" alt="Thumbnail video UDINVERSE: Udin yang berotot mendorong pohon bersama Emak" /></figure>
+            </div>
+          </article>
+
+          <article class="x-split x-card x-lift x-reveal">
+            <div class="x-split__body">
+              <p class="x-num">03 — Facebook Marketplace</p>
+              <h3>Reseller Marketplace</h3>
+              <div class="x-meta"><span class="x-year">2021</span><span>Penjual Online</span></div>
+              <ul class="x-bullets">
+                <li>Menjalankan siklus penjualan produk secara daring melalui Facebook Marketplace.</li>
+                <li>Menganalisis tren permintaan pasar, menyusun strategi promosi produk (listing), dan mengelola negosiasi dengan pelanggan untuk mengoptimalkan konversi penjualan.</li>
+              </ul>
+            </div>
+            <figure class="x-split__media"><img src="reseller.jpg" width="1400" height="764" loading="lazy" decoding="async" alt="Penjualan di marketplace" /></figure>
+          </article>
+        </section>
+
+        <section class="section x-band x-band--tint" id="internship" data-nav="Internship">
+          <div class="x-head x-reveal">
+            <p class="x-tag">Internship</p>
+            <h2>Praktik kerja lapangan</h2>
+          </div>
+          <article class="x-split x-split--flip x-card x-lift x-reveal">
+            <div class="x-split__body">
+              <p class="x-num">04 — Praktik Kerja Lapangan</p>
+              <h3>Kospin Jasa Pusat Pekalongan</h3>
+              <div class="x-meta"><span class="x-year">2020</span><span>IT Support Intern</span></div>
+              <ul class="x-bullets">
+                <li>Memberikan dukungan teknis harian (troubleshooting).</li>
+                <li>Membantu staf senior dalam pemeliharaan sistem informasi.</li>
+              </ul>
+            </div>
+            <figure class="x-split__media"><img src="itsupport.jpg" width="1400" height="764" loading="lazy" decoding="async" alt="Dukungan IT di Kospin Jasa Pusat Pekalongan" /></figure>
+          </article>
+        </section>
+
+        <section class="section x-band" id="skills" data-nav="Skills">
+          <div class="x-head x-reveal">
+            <p class="x-tag">Skills</p>
+            <h2>Keahlian</h2>
+          </div>
+          <div class="x-skills x-stagger">
+            <div class="x-skill x-card x-lift">
+              <h3><span class="x-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></span>Hard Skills</h3>
+              <ul class="x-chips">
+                <li>Manajemen operasional bisnis</li>
+                <li>Pemasaran digital &amp; E-Commerce</li>
+                <li>Riset pasar &amp; analisis tren</li>
+                <li>Pelayanan pelanggan</li>
+                <li>Pembukuan dasar</li>
+                <li>Dasar IT &amp; troubleshooting hardware/software</li>
+              </ul>
+            </div>
+            <div class="x-skill x-card x-lift">
+              <h3><span class="x-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg></span>Soft Skills</h3>
+              <ul class="x-chips">
+                <li>Adaptasi cepat <small>(fast learner)</small></li>
+                <li>Komunikasi &amp; negosiasi</li>
+                <li>Problem solving</li>
+                <li>Ketelitian</li>
+                <li>Membaca peluang</li>
+                <li>Manajemen waktu</li>
+                <li>Kerja sama tim &amp; mandiri</li>
+              </ul>
+            </div>
+            <div class="x-skill x-card x-lift">
+              <h3><span class="x-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg></span>Tools</h3>
+              <ul class="x-chips x-chips--tools">
+                <li>Microsoft Word</li>
+                <li>Excel (basic)</li>
+                <li>PowerPoint</li>
+                <li>Canva</li>
+                <li>CapCut</li>
+                <li>Facebook Marketplace</li>
+                <li class="x-ic-fb">Facebook Ads</li>
+                <li class="x-ic-ig">Instagram Ads</li>
+                <li class="x-ic-tt">TikTok Ads</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section x-band x-band--tint-2" id="contact" data-nav="Contact">
+          <div class="x-head x-reveal">
+            <p class="x-tag">Contact</p>
+            <h2>Mari bekerja sama</h2>
+            <p>Terbuka untuk peluang di bidang operasional dan digital marketing. Hubungi saya lewat email atau WhatsApp.</p>
+          </div>
+          <div class="x-contact-grid x-stagger">
+            <a class="x-ccard x-card x-lift" href="mailto:adnafika6670@gmail.com">
+              <span class="x-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg></span>
+              <span class="x-clabel">Email</span>
+              <strong>adnafika6670@gmail.com</strong>
+            </a>
+            <a class="x-ccard x-card x-lift" href="https://wa.me/6283169131981" target="_blank" rel="noopener">
+              <span class="x-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.2-4.2A8.5 8.5 0 1 1 20.5 12z"/><path d="M9 8.5c0 3.6 2.9 6.5 6.5 6.5l1-1.6-2-1-1 .9a4.5 4.5 0 0 1-2.8-2.8l.9-1-1-2L9 8.5z"/></svg></span>
+              <span class="x-clabel">WhatsApp</span>
+              <strong>+62 831-6913-1981</strong>
+            </a>
+            <div class="x-ccard x-card x-lift">
+              <span class="x-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+              <span class="x-clabel">Lokasi</span>
+              <strong>Pemalang, Jawa Tengah</strong>
+            </div>
+          </div>
+          <div class="x-links x-contact-links x-reveal">
+            <a class="x-btn x-btn--fill" href="CV_Adna_Fika_Agestifanka.pdf" download="CV_Adna_Fika_Agestifanka.pdf">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download CV
+            </a>
+            <a class="x-btn" href="https://wa.me/6283169131981" target="_blank" rel="noopener">Chat WhatsApp</a>
+            <a class="x-btn" href="mailto:adnafika6670@gmail.com">Kirim Email</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="foot">
+        <p>© 2026 Adna Fika Agestifanka</p>
+        <nav aria-label="Kembali ke bagian" data-auto></nav>
+      </footer>
+    </div>
+    <script src="hark.js"></script>
+    <script>
+      (function () {
+        var bar = document.getElementById("bar");
+        var burger = bar.querySelector(".x-burger");
+        var links = [].slice.call(bar.querySelectorAll(".x-bar__links a[href^='#']"));
+        function setOpen(open) {
+          bar.classList.toggle("is-open", open);
+          burger.setAttribute("aria-expanded", open ? "true" : "false");
+          burger.setAttribute("aria-label", open ? "Tutup menu" : "Buka menu");
+        }
+        burger.addEventListener("click", function () { setOpen(!bar.classList.contains("is-open")); });
+        [].forEach.call(bar.querySelectorAll("#menu a"), function (a) { a.addEventListener("click", function () { setOpen(false); }); });
+        document.addEventListener("click", function (e) { if (bar.classList.contains("is-open") && !bar.contains(e.target)) setOpen(false); });
+        if (window.matchMedia) {
+          var wide = window.matchMedia("(min-width: 881px)");
+          var onWide = function () { if (wide.matches) setOpen(false); };
+          if (wide.addEventListener) wide.addEventListener("change", onWide); else if (wide.addListener) wide.addListener(onWide);
+        }
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape" && bar.classList.contains("is-open")) { setOpen(false); burger.focus(); } });
+
+        // Highlight the current section in the bar.
+        var map = { home: "home", about: "about", education: "about", experience: "experience", internship: "experience", skills: "skills", contact: "contact" };
+        var root = document.documentElement;
+        var anim = root.classList.contains("x-anim");
+        var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll(s)); };
+        window.__xok = true;
+
+        // Stagger order for grouped reveals.
+        $$(".x-stagger").forEach(function (g) { [].forEach.call(g.children, function (c, i) { c.style.setProperty("--i", i); }); });
+
+        // ---------- Typewriter role line ----------
+        var tw = document.getElementById("x-type");
+        if (anim && tw) {
+          var words = ["Operasional Bisnis", "Digital Marketing", "Content Creator"], wi = 0, ci = words[0].length, del = true;
+          var tick = function () {
+            var w = words[wi];
+            if (del) {
+              ci--; tw.textContent = w.slice(0, ci);
+              if (ci <= 0) { del = false; wi = (wi + 1) % words.length; return setTimeout(tick, 380); }
+              return setTimeout(tick, 38);
+            }
+            w = words[wi]; ci++; tw.textContent = w.slice(0, ci);
+            if (ci >= w.length) { del = true; return setTimeout(tick, 1900); }
+            setTimeout(tick, 80);
+          };
+          setTimeout(tick, 2800);
+        }
+
+        // ---------- Counters ----------
+        var counters = $$("[data-count]");
+        function fmt(v, dec) {
+          var s = v.toFixed(dec).split(".");
+          return s[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".") + (s[1] ? "," + s[1] : "");
+        }
+        function runCounter(el) {
+          var to = parseFloat(el.getAttribute("data-count")), dec = +el.getAttribute("data-dec") || 0, suf = el.getAttribute("data-suffix") || "";
+          var t0 = performance.now(), dur = 2200;
+          (function tick(now) {
+            var t = Math.min(1, (now - t0) / dur), e = t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+            el.textContent = fmt(to * e, dec) + suf;
+            if (t < 1) requestAnimationFrame(tick);
+          })(t0);
+        }
+        if (anim) counters.forEach(function (el) { el.textContent = fmt(0, +el.getAttribute("data-dec") || 0) + (el.getAttribute("data-suffix") || ""); });
+
+        // ---------- Scroll progress and navbar shadow ----------
+        var progress = document.querySelector(".x-progress");
+        var ticking = false;
+        function frame() {
+          ticking = false;
+          var y = window.scrollY, max = document.documentElement.scrollHeight - window.innerHeight;
+          progress.style.setProperty("--p", max > 0 ? Math.min(1, y / max) : 0);
+          bar.classList.toggle("is-scrolled", y > 24);
+        }
+        function request() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+        window.addEventListener("scroll", request, { passive: true });
+        window.addEventListener("resize", request);
+        frame();
+
+        var reveals = $$(".x-reveal, .x-stagger");
+        if (!("IntersectionObserver" in window)) {
+          reveals.forEach(function (el) { el.classList.add("is-in"); });
+          return;
+        }
+        var spy = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            var target = "#" + map[e.target.id];
+            links.forEach(function (a) { a.setAttribute("aria-current", a.getAttribute("href") === target ? "true" : "false"); });
+          });
+        }, { rootMargin: "-45% 0px -50% 0px" });
+        Object.keys(map).forEach(function (id) { var s = document.getElementById(id); if (s) spy.observe(s); });
+
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
+        }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+        reveals.forEach(function (el) { io.observe(el); });
+
+        var cio = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) { if (anim) runCounter(e.target); cio.unobserve(e.target); } });
+        }, { threshold: 0.6 });
+        counters.forEach(function (el) { cio.observe(el); });
+      })();
+    </script>
+  </body>
+</html>
